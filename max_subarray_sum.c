@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 
 int maxSubArray(const int* , int );
@@ -24,30 +25,49 @@ int maxSubArray(const int* A, int n1) {
 	int size = n1*(n1+1);
 	int max_arr[size];
     int count = 0;
+	int max_sum = INT_MIN;
+	int flag = 1;
    
-    for (i = 0; i < n1; i++) {
+ /*   for (i = 0; i < n1; i++) {
             k = i;
         for (j = i; j < n1; j++) {
             while (k <= j) {
                // printf("%d ",*(a+k));
                 sum += *(A+k);
                 k++;
+				if (flag == 1)
+					max_sum = sum;
+				flag = 0;
             }
-            max_arr[count] = sum;
-            count++;
+            //max_arr[count] = sum;
+            //count++;
             //printf("\n");
+			
+			if (sum > max_sum)
+				max_sum = sum;
             k = i;
             sum = 0;
         }
-	printf("Count = %d\n",count);
+
+//	printf("Count = %d\n",count);
     }
+*/
+/*
     int max_sum = *(max_arr+0);
     for (i = 0; i < count; i++) {
         if (*(max_arr+i)>max_sum) {
             max_sum = *(max_arr+i);
         }
     }
-   
+ */
+	for (i = 0; i < n1; i++) {
+		sum += *(A+i);
+		if (sum > max_sum)
+			max_sum = sum;
+		if (sum < 0)
+			sum = 0;
+	}
+  
     printf("max_sum in contiguous subarray = %d\n",max_sum);
     return max_sum;
    
