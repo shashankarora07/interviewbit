@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int swap(int *a, int *x, int *y)
+int swap(int *x, int *y)
 {
 	int temp = 0;
 	temp = *x;
@@ -27,11 +27,11 @@ int partition(int *a, int start, int end)
 	int i = 0;
 	for (i = start; i <= end - 1; i++) {
 		if (a[i] <= pivot) {
-			swap(a,&a[i],&a[pIndex]);
+			swap(&a[i],&a[pIndex]);
 			pIndex++;
 		}
 	}
-	swap(a,&a[pIndex],&a[end]);
+	swap(&a[pIndex],&a[end]);
 	
 	return pIndex;
 }
