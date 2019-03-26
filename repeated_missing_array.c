@@ -9,28 +9,65 @@ int swap(int *a, int *x, int *y)
 	*y = temp;
 }
 
+int sort_array(int *a, int start, int end)
+{
+	int pIndex = 0;
+	if (start < end)
+	{
+		pIndex = partition(a,start,end);
+		sort_array(a,start, pIndex-1);
+		sort_array(a,pIndex+1,end);
+	}
+}
+
+int partition(int *a, int start, int end)
+{
+	int pivot = a[end];
+	int pIndex = start;
+	int i = 0;
+	for (i = start; i <= end - 1; i++) {
+		if (a[i] <= pivot) {
+			swap(a,&a[i],&a[pIndex]);
+			pIndex++;
+		}
+	}
+	swap(a,&a[pIndex],&a[end]);
+	
+	return pIndex;
+}
+
 int* repeated_missing_element(int *a, int len)
 {
 	int index = 0;
 	int out[2];
-	for (int i = 0; i < len; i++) {
+/*	for (int i = 0; i < len; i++) {
 		if (a[i] != index + 1) 
 			swap(a,&a[i],&a[a[i]-1]);
 	
 		index++;	
 	}
+*/
+	int start = 0;
+	int end = len - 1;
+	sort_array(a,start,end);
 	
 	for (int i = 0; i < len; i++)
-		printf("%d\t",a[i]);
+		printf("%d   ",a[i]);
+	printf("\n");
 
 	for (int i = 0; i < len; i++) {
-		if (a[i] == a[i+1])
-			printf("repeated element  = %d and missing element = %d\n",a[i], a[i] + 1);
+		if (a[i] == a[i+1]) {
+			printf("repeated element  = %d \n",a[i]);
 			out[0] = a[i];
+			//out[1] = a[i] + 1;
+		}
+		else if ((a[i+1] - a[i]) != 1 && a[i+1]>0) {
+			printf("missing element = %d\n",a[i] + 1);
 			out[1] = a[i] + 1;
-			return out;
+		}
 	}	
 	
+	return out;
 	//return a;
 }
 
