@@ -10,27 +10,28 @@ unsigned int reverse(unsigned int a)
 	}
 
 	printf("reverse_num = %d\n",reverse_num);
+	binaryPrint(reverse_num);
+}
+
+void binaryPrint(int no)
+{
+	int i;
 	for (i = 0; i < 32; i++) {
-		if((reverse_num >> i) & 1)
+		if((no & (1 << (31 - i))))
 			printf("1");
 		else
 			printf("0");
 	}
 	printf("\n");
-}
 
+
+}
 
 int main()
 {
 
 	unsigned int A = 3;
-	for (int i = 0; i < 32; i++) {
-		if((A >> i) & 1)
-			printf("1");
-		else
-			printf("0");
-	}
-	printf("\n");
+	binaryPrint(A);
 	reverse(A);
 
 
