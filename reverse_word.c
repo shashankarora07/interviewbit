@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdbool.h>
 
 void reverseString(char *start, char *end)
 {
@@ -48,6 +49,38 @@ void reverseString(char *start, char *end)
 }
 */
 
+void removeExtraSpaces(char *s)
+{
+	int len = strlen(s);
+	int i = 0, j = -1;
+	bool extraSpace = false;
+
+	while(++j < len && s[j] == ' ');
+
+	while(j < len) {
+		if (s[j] != ' ' ) {
+			s[i++] = s[j++];
+			extraSpace = false;
+		}
+		else if (s[j++] == ' ' ) {
+			if (!extraSpace) {
+				s[i++] = ' ';
+				//s[i++] = ' ';
+				extraSpace = true;
+			}
+		}
+	}
+	printf("i = %d\n",i);
+	if (s[i-1] == ' ') {
+		printf("In if part\n");
+		s[i-1] = '\0';
+	}
+	else {
+		s[i] = '\0';
+		printf("In else part\n");
+	}
+		
+}
 
 void reverseWord(char *s)
 {
@@ -60,17 +93,18 @@ void reverseWord(char *s)
 	while(*temp) {
 		if (word_start == NULL && (*temp != ' ')) {
 			word_start = temp;
+			printf("###%s\n",word_start);
 		}
 		if (word_start && ((*(temp + 1) == ' ') || *(temp+1) == '\0')) {
-			printf("temp = %c and word_start = %c\n",*temp,*word_start);
+			printf("temp =%s\n",temp);
+			printf("word_start =%s\n",word_start);
 			reverseString(word_start, temp);
 			word_start = NULL;
 		}
-		//printf("temp = %c and word_start = %c\n",*temp,*word_start);
 		temp++;
 		}
 	
-	printf("%s\n",s);
+	printf("string After reverse:%s\n",s);
 	len = strlen(s);
 	printf("len after reverse: %d\n",len);
 
@@ -82,13 +116,17 @@ void reverseWord(char *s)
 
 int main()
 {
-	char str[] = "        I am Shashank     Arora";
+	char str[] = "        I am Shashank     Arora    ";
 	//"I ma knahsahS arorA" first reverse word and then reverse whole string
 	// OUTPUT: "Arora Shashank am I"
 	char *temp = str;
 	printf("actual string:%s\n",temp);
 	int len = strlen(temp);
 	printf("Actual len: %d\n",len);
+	removeExtraSpaces(temp);
+	printf("After remove extra space:%s\n",temp);
+	len = strlen(temp);
+	printf("len after removing spaces: %d\n",len);
 	reverseWord(temp);
 	
 	
