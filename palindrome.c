@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdbool.h>
 #include<stdlib.h>
 #include<string.h>
 
@@ -9,25 +10,44 @@ void checkPalindrome(char *s)
 
 	int left = 0;
 	int right = len -1;
+	bool comeOut1 = true;
+	bool comeOut2 = true;
 
 	while(right > left) {
-		if ((s[left] >= 65 && s[left] <= 90) || (s[left] >= 97 && s[left] <= 122)) {	
+		while(comeOut1) {
+			if ((s[left] >= 65 && s[left] <= 90) || (s[left] >= 97 && s[left] <= 122)) {	
+				comeOut1 = false;
+			}
+			else {
+				left++;
+			}
 		}
-		else {
+		while(comeOut2) {
+			if ((s[right] >= 65 && s[right] <= 90) || (s[right] >= 97 && s[right] <= 122)) {	
+				comeOut2 = false;
+			}
+			else {
+				right--;
+			}
+		}
+		if ((s[left] == abs(32-s[right]))) {
 			left++;
+			right--;
 		}
-		if ((s[right] >= 65 && s[right] <= 90) || (s[right] >= 97 && s[right] <= 122)) {	
+		else if (abs(32 - s[left]) == s[right]) {
+			left++;
+			right--;
 		}
-		else {
-			right++;
-		}
-		if (s[left] != s[right]) {
+		else if (s[left] != s[right]) {
 			printf("'%s' is not a palindrome\n",s);
 			return;
+		} else {
+			left++;
+			right--;
 		}
-		left++;
-		right++;
-	}
+		comeOut1 = true;
+		comeOut2 = true;
+		}
 	printf("'%s' is a palindrome\n",s);
 }
 

@@ -87,7 +87,14 @@ void reverseWord(char *s)
 		
 	char *word_start = NULL;
 	char *temp = s;
-	int len = strlen(s);
+	char *cpy_str = s;
+	int len = 0;
+	while(*cpy_str) {
+		len++;
+		cpy_str++;
+	}
+	printf("len = %d\n",len);
+	//int len = strlen(s);
 	int j = 0,i;
 
 	while(*temp) {
@@ -109,6 +116,10 @@ void reverseWord(char *s)
 	printf("len after reverse: %d\n",len);
 
 	reverseString(s,temp-1);
+	removeExtraSpaces(s);
+	printf("After remove extra space:%s\n",temp);
+	len = strlen(s);
+	printf("len after removing spaces: %d\n",len);
 	printf("%s\n",s);
 
 }
@@ -116,17 +127,17 @@ void reverseWord(char *s)
 
 int main()
 {
-	char str[] = "        I am Shashank     Arora    ";
+	char str[] = "   I am Shashank     Arora   ";
 	//"I ma knahsahS arorA" first reverse word and then reverse whole string
 	// OUTPUT: "Arora Shashank am I"
 	char *temp = str;
 	printf("actual string:%s\n",temp);
 	int len = strlen(temp);
 	printf("Actual len: %d\n",len);
-	removeExtraSpaces(temp);
-	printf("After remove extra space:%s\n",temp);
-	len = strlen(temp);
-	printf("len after removing spaces: %d\n",len);
+//	removeExtraSpaces(temp);
+//	printf("After remove extra space:%s\n",temp);
+//	len = strlen(temp);
+//	printf("len after removing spaces: %d\n",len);
 	reverseWord(temp);
 	
 	
