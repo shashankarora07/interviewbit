@@ -3,52 +3,65 @@
 #include<stdlib.h>
 #include<string.h>
 
+bool isAlphaNumeric(char c) {
+	if ((c >= '0' && c <= '9') || (c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
+		return true;
+	}
+	return false;
+}
 
-void checkPalindrome(char *s)
+void checkPalindrome(char *A)
 {
-	int len = strlen(s);
 
-	int left = 0;
-	int right = len -1;
-	bool comeOut1 = true;
-	bool comeOut2 = true;
+    int len = 0;
+    char *cpy_str = A;
+    while(*cpy_str) {
+        len++;
+        cpy_str++;
+    }
+    int left = 0;
+    int right = len -1;
+    short comeOut1 = 1;
+    short comeOut2 = 1;
 
-	while(right > left) {
-		while(comeOut1) {
-			if ((s[left] >= 65 && s[left] <= 90) || (s[left] >= 97 && s[left] <= 122)) {	
-				comeOut1 = false;
-			}
-			else {
-				left++;
-			}
-		}
-		while(comeOut2) {
-			if ((s[right] >= 65 && s[right] <= 90) || (s[right] >= 97 && s[right] <= 122)) {	
-				comeOut2 = false;
-			}
-			else {
-				right--;
-			}
-		}
-		if ((s[left] == abs(32-s[right]))) {
-			left++;
-			right--;
-		}
-		else if (abs(32 - s[left]) == s[right]) {
-			left++;
-			right--;
-		}
-		else if (s[left] != s[right]) {
-			printf("'%s' is not a palindrome\n",s);
-			return;
-		} else {
-			left++;
-			right--;
-		}
-		comeOut1 = true;
-		comeOut2 = true;
-		}
-	printf("'%s' is a palindrome\n",s);
+    while(right >= left) {
+        while(comeOut1) {
+            if (isAlphaNumeric(A[left])) {
+                comeOut1 = 0;
+            }
+            else {
+                left++;
+            }
+        }
+        while(comeOut2) {
+            if (isAlphaNumeric(A[right])) {
+                comeOut2 = 0;
+            }
+            else {
+                right--;
+            }
+        }
+        if ((A[left] == abs(32-A[right]))) {
+            //left++;
+            //right--;
+        }
+        if (abs(32 - A[left]) == A[right]) {
+          // left++;
+           // right--;
+        }
+        if (A[left] != A[right]) {
+			printf("not equal\n");
+            return 0;
+        } else {
+            left++;
+            right--;
+        }
+        comeOut1 = 1;
+        comeOut2 = 1;
+        }
+    
+
+	printf("'%s' is a palindrome\n",A);
 }
 
 int main()
@@ -59,7 +72,9 @@ int main()
 	scanf("%s",str);
 	*/
 	
-	char *str = "A man, a plan, a canal: Panama";
+	char *str = "A man, a plan, a canal: Panama\"";
+	//char *str = "1a2";
+	//char *str = "\"";
 	checkPalindrome(str);
 	
 	
