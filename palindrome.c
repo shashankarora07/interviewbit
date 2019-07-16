@@ -21,43 +21,22 @@ void checkPalindrome(char *A)
     }
     int left = 0;
     int right = len -1;
-    short comeOut1 = 1;
-    short comeOut2 = 1;
 
     while(right >= left) {
-        while(comeOut1) {
-            if (isAlphaNumeric(A[left])) {
-                comeOut1 = 0;
-            }
-            else {
-                left++;
-            }
+       if (!isAlphaNumeric(A[left])) {
+            left++;
+			continue;
         }
-        while(comeOut2) {
-            if (isAlphaNumeric(A[right])) {
-                comeOut2 = 0;
-            }
-            else {
-                right--;
-            }
+       if (!isAlphaNumeric(A[right])) {
+            right--;
+			continue;
         }
-        if ((A[left] == abs(32-A[right]))) {
-            //left++;
-            //right--;
-        }
-        if (abs(32 - A[left]) == A[right]) {
-          // left++;
-           // right--;
-        }
-        if (A[left] != A[right]) {
+        if ((A[left] != A[right]) && (abs(A[left] - A[right]) != 32)) {
 			printf("not equal\n");
             return 0;
-        } else {
-            left++;
-            right--;
         }
-        comeOut1 = 1;
-        comeOut2 = 1;
+		left++;
+        right--;
         }
     
 
