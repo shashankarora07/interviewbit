@@ -6,10 +6,13 @@
 int maxArea(int *a, int len)
 {
 	int maxarea = 0, area = 0;
-	int i = 0;
+	int i = 0, j = 0;
 	
-	for (i = 0; i < len; i++)
+	for (i = 0; i < len/2; i++)
 	{
+		area = abs(i - len -j -1) * MIN(*(a+len-j-1),*(a+i));
+		
+		printf("area = %d\n",area);
 		
 		
 	}	
