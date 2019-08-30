@@ -11,11 +11,23 @@ int intersectionTwoSortedArray(int *A, int lenA, int *B, int lenB)
 	int size = lenA + lenB;
 	int *out = (int *)malloc(sizeof(int) * size);
 
-	while(lenA && lenB)
+	while(i < lenA && j < lenB)
 	{
+		printf("LenA = %d lenB = %d, i = %d, j = %d\n",lenA,lenB,i,j);
+		if (A[i] == B[j]) {
+			out[k++] = A[i++];
+			j++;
+		}
+		else if (A[i] < B[j]) {
+			i++;
+		}
+		else {
+			j++;
+		}
+
 	}
 
-	PrintArray(out, size);
+	PrintArray(out, k);
 }
 
 void PrintArray(int *a, int len)
