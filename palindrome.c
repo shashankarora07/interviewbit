@@ -10,7 +10,7 @@ bool isAlphaNumeric(char c) {
 	return false;
 }
 
-void checkPalindrome(char *A)
+int checkPalindrome(char *A)
 {
 
     int len = 0;
@@ -51,7 +51,7 @@ int main()
 	scanf("%s",str);
 	*/
 	
-	char *str = "A man, a plan, a canal: Panama\"";
+	char *str = "  A man,   a plan, a canal: Panam a  \"";
 	//char *str = "1a2";
 	//char *str = "\"";
 	checkPalindrome(str);
