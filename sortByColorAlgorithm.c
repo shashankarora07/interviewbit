@@ -18,6 +18,31 @@ void swap(int *a, int *b)
 
 int sortByColor(int *a, int len)
 {
+
+//	int i = 0;
+//	int count0 = 0, count1 = 0, count2 = 0;
+//
+//	for (i = 0; i < len; i++) {
+//		if (a[i] == 0)
+//			count0++;
+//		else if (a[i] == 1)
+//			count1++;
+//		else
+//			count2++;
+//	}
+//
+//	for (i = 0; i < len; i++) {
+//		if (i < count0)
+//			a[i] = 0;
+//		else if (i < count0+count1)
+//			a[i] = 1;
+//		else
+//			a[i] = 2;
+//	}
+
+
+/* ............  Dutch National Flag Algorithm ...........*/
+
 	int low = 0;
 	int mid = 0;
 	int high = len-1;
@@ -35,6 +60,7 @@ int sortByColor(int *a, int len)
 					break;
 		}
 	}
+
 }
 
 
