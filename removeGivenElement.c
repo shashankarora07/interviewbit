@@ -2,15 +2,14 @@
 #include<stdlib.h>
 
 
-int removeDuplicates(int *a, int len)
+int removeGivenElements(int *a, int len, int b)
 {
 	int i = 0, j = 0;
 
-	for (i = 1; i < len; i++) {
+	for (i = 0; i < len; i++) {
 		
-		if (a[j] != a[i]) {
-			a[j+1] = a[i];
-			j++;
+		if (b != a[i]) {
+			a[j++] = a[i];
 		}
 	}	
 	len = j+1;
@@ -34,7 +33,7 @@ int main(int argc, char *argv[])
 	for(i = 0; i < size; i++)
 		scanf("%d",&arr[i]);
 	
-	size = removeDuplicates(arr,size);		
+	size = removeGivenElements(arr,size,3);		
 	
 	for(i = 0; i < size; i++)
 		printf("%d  ",arr[i]);

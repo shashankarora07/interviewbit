@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+/* remove the duplicates in place such that each element appear atmost twice or not more than twice
+ and return the new length. */
 
 int removeDuplicates(int *a, int len)
 {
@@ -49,7 +51,7 @@ int main(int argc, char *argv[])
 	}	
 
 	size = atoi(argv[1]);
-	int arr[size];
+	int *arr = (int*)malloc(size * sizeof(int));
 
 	printf("Enter array \n");
 	for(i = 0; i < size; i++)

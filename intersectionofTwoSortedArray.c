@@ -49,13 +49,13 @@ int main(int argc, char *argv[])
 	}
 
 	int size = atoi(argv[1]);
-	//int arr[size];
+	int *arr = (int*)malloc(size * sizeof(int));
 	
 	int A[] = {1,2,3,3,4,5,6};
 	int B[] = {3,3,5};
 
 	//for (i = 0; i < size; i++)
-	//	scanf("%d",&arr[size]);
+	//	scanf("%d",&arr[i]);
 
 	int sizeA = sizeof(A)/sizeof(A[0]);
 	int sizeB = sizeof(B)/sizeof(B[0]);

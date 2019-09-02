@@ -22,7 +22,7 @@ int checkPalindrome(char *A)
     int left = 0;
     int right = len -1;
 
-    while(right >= left) {
+    while(right > left) {
        if (!isAlphaNumeric(A[left])) {
             left++;
 			continue;
