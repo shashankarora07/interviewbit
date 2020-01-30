@@ -20,7 +20,8 @@ void String_reverseUsingStack(char *s)
 
 int main()
 {
-	char s[] = "Shashank Arora";
+	//char s[] = "Shashank Arora";
+	char s[] = "[]](}}{[[](){{]][){[])}(([([]()]{[([({";
 
 	String_reverseUsingStack(s);
 

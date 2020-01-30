@@ -22,7 +22,7 @@ void reverseString(char *s)
 
 int main()
 {
-	char *str = "HelloWorld";
+	char str[] = "HelloWorld";
 /*
 	*(str+3) = 'd';
 	char arr[] = "ShashankArora";

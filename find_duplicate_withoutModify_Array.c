@@ -27,7 +27,7 @@ int duplicateArray(int *A, int n)
 int main()
 {
 	
-	int arr[] = {1,6,2,7,3,4,5};
+	int arr[] = {1,6,2,2,3,4,5};
 	int len = sizeof(arr)/sizeof(arr[0]);
 	int repeatnum = 0;
 	
