@@ -31,13 +31,34 @@ char *myStrStr(char *s, char *sfound)
 	return NULL;
 }
 
+int NoOfOccurrence(char *s, char *sfound)
+{
+	int ret = 0, count = 0;
+	
+	while(*s != '\0') {
+		
+		if (*s == *sfound) {
+			ret = compare(s,sfound);
+			if (ret)
+				count += 1;
+		}
+		
+		s++;
+	}
+	
+	return count;
+}
+
 int main()
 {
-	char *s = "Aro";
-	char *str = "Arora";
+	char *s = "myname is shashankname arora namename";
+	char *str = "name";
 	char *ret = NULL;
+	int no = 0;
 	ret = myStrStr(s,str);
 	printf("ret string = %s\n",ret);
+	no = NoOfOccurrence(s,str);
+	printf("no of occurence = %d\n",no);
 
 	return 0;
 }
