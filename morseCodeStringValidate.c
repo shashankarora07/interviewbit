@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 
-
 int morseCode_StringValidate(char *s[], int len)
 {
 	int i = 0, j = 0, dash = 0, dot = 0, count = 0;
@@ -14,19 +13,34 @@ int morseCode_StringValidate(char *s[], int len)
 		printf("size = %d\n",size);
 		while (j < size) {
 
-			while(s[i][j] == '.' && dot++ && ++j);
+			/* this while() code is required only in case when questioniare
+			specify that no of dots '...' followed immediately with equal 
+			no of dash '---' .*/
+			/* if requirement matches with above case then commented if case
+			would be better to use and break the loop. */
+			/* while(s[i][j] == '.' && dot++ && ++j); */ /* this condition is wrong
+			 due to post increment of dot variable */ 
+			while(s[i][j] == '.' && ++dot && ++j);
 			printf("dot = %d and j = %d\n",dot,j);
 
-			while(s[i][j] == '-' && dash++ && ++j);
+			//while(s[i][j] == '-' && dash++ && ++j);
+			while(s[i][j] == '-' && ++dash && ++j);
 			printf("dash = %d and j = %d\n",dash,j);
-
-			/*if (s[i][j] == '.') {
+			
+		/*	if (dot != dash) {
+				printf("dot = %d and dash = %d\n",dot,dash);
+				break;
+			}
+		*/
+			/* if condition is sufficent in case when dots is followed by dash
+			and string starts with . and ends with - */
+		/*	if (s[i][j] == '.') {
 				dot++, j++;
 			}
 			if (s[i][j] == '-') {
 				dash++, j++;
-			}*/
-
+			}
+		*/
 			//printf("dot = %d and dash = %d\n",dot,dash);
 
 		}
@@ -48,10 +62,9 @@ int main(int argc, char *argv[])
 
 	char *str = argv[1];
 	*/
-	//char *str = "myname is shashankname arora namename  ";
-	//char *str = "   xDGBklKecz IAcOJYOH O  WY WPi     ";
-	//char *str = "d";
-	char *str[] = {"...----..--",".-.-.-.-"};
+
+	//char *str[] = {"...--...----",".-.-.-.-"};
+	char *str[] = {"...---...----",".-.-.-.-"};
 	int len =2;
 	
 	int ret = -1;
