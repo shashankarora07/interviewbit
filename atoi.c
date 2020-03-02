@@ -19,12 +19,13 @@ int my_atoi(char *s)
 		}
 		*/
 		int temp = s[i]-'0';
-		if (result > (INT_MAX/10)  || (result == INT_MAX/10 && temp > 7)) {
-			if (sign==1)
-				return INT_MAX;
+
+		if (isdigit(s[i])) {
+			if (result > (INT_MAX/10)  || (result == INT_MAX/10 && temp > 7)) {
+				if (sign==1)
+					return INT_MAX;
 			return INT_MIN;
 		}
-		if (isdigit(s[i])) {
 			result = result * 10 + temp;
 		}
 		if (isalpha(s[i]) || s[i] == ' ') {
@@ -42,7 +43,9 @@ int main(int argc, char const *argv[])
 {
 	
 	//char *str = "    2147483647 d 3 dsds";
-	char *str = "   d31474836  ds 3 dsds";
+	//char *str = "     -2147483648 d  51";
+	char *str ="     512147826 d 2 8070067M75 X199R 547 8C0A11 93I630\
+	 4P4071 029W433619 M3 5 14703818 776366059B9O43393";
 
 	printf("ret atoi() =>%d\n",atoi(str));
 
