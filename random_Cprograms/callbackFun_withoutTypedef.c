@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-//typedef void (*callback)(void);
+void (*callback)(void);
 void callback_fun(void (*callback)(void));
 
 void fun()
@@ -13,7 +13,7 @@ int main()
 
 	void (*ptr_to_func)(void)  = fun;
 	(*ptr_to_func)();
-	printf("called my fun using function pointer\n");
+	printf("called fun() using function pointer\n");
 
 	callback_fun(ptr_to_func);
 	printf("back to main()\n");

@@ -18,13 +18,15 @@ void func()
 int main()
 {
 
-	func();
+//	func();
 
 //	int *p = &b;
 //
 //	*p = 100;
 //
 //	printf("func = %d\n",*p);
+	printf("int = %d\n",5121478262);
+	printf("int = %d\n",2147483647);
 	return 0;
 }
 

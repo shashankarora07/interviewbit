@@ -2,14 +2,16 @@
 
 int isPrime(int A) 
 {
-	int i = 0, flag = 1;
+	int i = 0, flag = 1, rem = 0;
 
 	for (i = 2; i <= A / 2; i++) {
-		if (A % i == 0) {
+		if ((rem = A % i) == 0) {
+			printf("Inside rem = %d\n",rem);	
 			printf("%d is not prime number.\n",A);
 			flag = 0;
 			break;
-		}	
+		}
+		printf("rem = %d\n",rem);	
 	}
 	if (flag) {
 		printf("%d is prime number.\n",A);

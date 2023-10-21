@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define mask(n,p) ~(~0<<n)<<p
+#define mask(n,p) ~(~0<<n)<<p-1
 
 char* digitsInBinary(int A)
 {   
@@ -49,13 +49,15 @@ int swapBitsInPair(int A, int p1, int p2, int n)
 	p1bits = A & mask(n,p1);
 	p2bits = A & mask(n,p2);
 	//printf("p1bits %s\n",digitsInBinary(p2bits));
-	//binaryPrint(p1bits,8);
-	//binaryPrint(p2bits,8);
+	binaryPrint(p1bits,8);
+	binaryPrint(p2bits,8);
 
-	int res = (p1bits >> p1) ^ (p2bits >> p2);
-	//binaryPrint(res,8);
+	int res = (p1bits >> p1-1) ^ (p2bits >> p2-1);
+	binaryPrint(res,8);
 	
-	res = (res << p2) | (res << p1);	
+	res = (res << p2-1) | (res << p1-1);	
+	binaryPrint(res,8);
+	
 	A = A ^ res;	
 
 	binaryPrint(A,8);
@@ -64,10 +66,10 @@ int swapBitsInPair(int A, int p1, int p2, int n)
 
 int main()
 {
-	int no = 47;
+	int no = 15;
 	printf("%s\n",digitsInBinary(no));
 	
-	swapBitsInPair(no,1,5,3);
+	swapBitsInPair(no,5,2,2);
 	
 	return 0;
 }

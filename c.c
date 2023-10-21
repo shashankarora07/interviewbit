@@ -12,4 +12,5 @@ if ('A' == abs(32 - 'a'))
 	result =5 % 7;
 	printf("result = %d\n",result);
 
+printf("%s\n",8+'\0');
 }
